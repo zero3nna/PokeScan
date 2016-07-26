@@ -1,0 +1,29 @@
+{
+  "pokemons": {
+    "47a8c0d4e43-19": {
+      "encounter_id": 1985352894857854125,
+      "pokemon_data": {
+        "pokemon_id": 19
+      },
+      "hides_at": 1469107703.523663,
+      "last_modified_timestamp_ms": 1469106816644,
+      "latitude": 52.42315954803805,
+      "time_till_hidden_ms": 888424,
+      "spawnpoint_id": "47a8c0d4e43",
+      "longitude": 12.503535172571496
+    },
+    "47a8c0d4c53-16": {
+      "encounter_id": 4663854890431978573,
+      "pokemon_data": {
+        "pokemon_id": 16
+      },
+      "hides_at": 1469107342.755663,
+      "last_modified_timestamp_ms": 1469106816644,
+      "latitude": 52.42305124417991,
+      "time_till_hidden_ms": 527656,
+      "spawnpoint_id": "47a8c0d4c53",
+      "longitude": 12.502179015095635
+    }
+  },
+  "forts": []
+}
