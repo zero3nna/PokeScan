@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		68EB47ACF35FBFE2DD4B7EB6 /* libPods-PokeScan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 598F4162ED05F3614305DB7F /* libPods-PokeScan.a */; };
 		8ACC5963CA4A0DE032E1190B /* libPods-PokéScan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F1431EA25D9CD140F04CC5 /* libPods-PokéScan.a */; };
 		DA228D031D44D0AF00131DAF /* testdata.json in Resources */ = {isa = PBXBuildFile; fileRef = DA228D021D44D0AF00131DAF /* testdata.json */; };
 		DA228D051D44DA3F00131DAF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA228D041D44DA3F00131DAF /* MapKit.framework */; };
@@ -29,10 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		098B23F3B6910DDEA81F66D7 /* Pods-PokeScan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeScan.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokeScan/Pods-PokeScan.release.xcconfig"; sourceTree = "<group>"; };
 		174E03B19226C1108C5E9967 /* Pods-PokéScan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokéScan.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokéScan/Pods-PokéScan.release.xcconfig"; sourceTree = "<group>"; };
-		598F4162ED05F3614305DB7F /* libPods-PokeScan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PokeScan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5AADED04ACB09F889CF260F8 /* Pods-PokeScan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeScan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PokeScan/Pods-PokeScan.debug.xcconfig"; sourceTree = "<group>"; };
 		B6F1431EA25D9CD140F04CC5 /* libPods-PokéScan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PokéScan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B936E80AC145CED3B6CDA112 /* Pods-PokéScan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokéScan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PokéScan/Pods-PokéScan.debug.xcconfig"; sourceTree = "<group>"; };
 		DA228D021D44D0AF00131DAF /* testdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testdata.json; sourceTree = "<group>"; };
@@ -71,7 +67,6 @@
 			files = (
 				DA228D131D44F3FB00131DAF /* CoreLocation.framework in Frameworks */,
 				DA228D051D44DA3F00131DAF /* MapKit.framework in Frameworks */,
-				68EB47ACF35FBFE2DD4B7EB6 /* libPods-PokeScan.a in Frameworks */,
 				8ACC5963CA4A0DE032E1190B /* libPods-PokéScan.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,7 +77,6 @@
 		20D550BDD0E06A3AEA4F4611 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				598F4162ED05F3614305DB7F /* libPods-PokeScan.a */,
 				B6F1431EA25D9CD140F04CC5 /* libPods-PokéScan.a */,
 			);
 			name = Frameworks;
@@ -91,8 +85,6 @@
 		63D2B32FB33D959BB91F2AB5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5AADED04ACB09F889CF260F8 /* Pods-PokeScan.debug.xcconfig */,
-				098B23F3B6910DDEA81F66D7 /* Pods-PokeScan.release.xcconfig */,
 				B936E80AC145CED3B6CDA112 /* Pods-PokéScan.debug.xcconfig */,
 				174E03B19226C1108C5E9967 /* Pods-PokéScan.release.xcconfig */,
 			);

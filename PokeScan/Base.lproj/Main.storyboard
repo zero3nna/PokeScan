@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -20,16 +21,33 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oE2-an-b21">
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                             </mapView>
-                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcZ-pe-fmf">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcZ-pe-fmf">
                                 <rect key="frame" x="130" y="678" width="154" height="38"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="0.5964336832061069" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="154" id="B9h-gs-z20"/>
+                                    <constraint firstAttribute="height" constant="38" id="QkA-VH-xDi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <state key="normal" title="Scan Location">
-                                    <color key="titleColor" red="1" green="0.71934053118888885" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="0.71764705882352942" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upd-PV-dgY">
+                                <rect key="frame" x="340" y="678" width="38" height="38"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="0.5964336832061069" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="Awj-KK-bVC"/>
+                                    <constraint firstAttribute="width" constant="38" id="D7m-fK-TrI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <inset key="imageEdgeInsets" minX="2" minY="2" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="Arrow"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
@@ -39,8 +57,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="upd-PV-dgY" firstAttribute="bottom" secondItem="DcZ-pe-fmf" secondAttribute="bottom" id="0We-U9-Z8X"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="upd-PV-dgY" secondAttribute="trailing" constant="16" id="5a6-uy-kKz"/>
                             <constraint firstItem="DcZ-pe-fmf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Kyf-rc-FVk"/>
                             <constraint firstItem="oE2-an-b21" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="M79-ld-NDb"/>
+                            <constraint firstItem="upd-PV-dgY" firstAttribute="top" secondItem="DcZ-pe-fmf" secondAttribute="top" id="PhT-cI-ctU"/>
                             <constraint firstItem="oE2-an-b21" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="XQc-kJ-yFe"/>
                             <constraint firstAttribute="bottom" secondItem="DcZ-pe-fmf" secondAttribute="bottom" constant="20" id="Yds-CW-ia4"/>
                             <constraint firstItem="oE2-an-b21" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ZUx-VJ-x0T"/>
@@ -52,6 +73,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="MapView" destination="oE2-an-b21" id="bOR-Uo-gRd"/>
+                        <outlet property="currentLocation" destination="upd-PV-dgY" id="aBm-TA-Du9"/>
                         <outlet property="scanButton" destination="DcZ-pe-fmf" id="E98-N0-c7w"/>
                     </connections>
                 </viewController>
@@ -60,4 +82,7 @@
             <point key="canvasLocation" x="460" y="528"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Arrow" width="32" height="32"/>
+    </resources>
 </document>

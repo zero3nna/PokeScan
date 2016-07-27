@@ -49,6 +49,7 @@
     [_mapView setUserTrackingMode:MKUserTrackingModeFollow];
     
     [_scanButton addTarget:self action:@selector(scanForPokemon) forControlEvents:UIControlEventTouchUpInside];
+    [_currentLocation addTarget:self action:@selector(resetCurrentLocation) forControlEvents:UIControlEventTouchUpInside];
     
     currentLatitude = 0.0;
     currentLongitude = 0.0;
@@ -82,7 +83,11 @@
     } else {
         NSLog(@"No GPS Position");
     }
-    
+}
+
+- (void)resetCurrentLocation {
+    _mapView.showsUserLocation = YES;
+    [_mapView setUserTrackingMode:MKUserTrackingModeFollow];
 }
 
 -(void)createPokeAnnotations:(NSDictionary *)pokemons {
