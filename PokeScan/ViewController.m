@@ -68,7 +68,7 @@
     NSLog(@"Trying to scan pokemon");
     [_mapView removeAnnotations:_mapView.annotations];
     if (currentLatitude != 0.0 && currentLongitude != 0.0) {
-        NSLog(@"fetching pokemon");
+        NSLog(@"checking login");
         [_scanButton setUserInteractionEnabled:NO];
         [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
         [SVProgressHUD setForegroundColor:[UIColor colorWithRed:255.0f/255.0f green:183.0f/255.0f blue:0.0f/255.0f alpha:1.0]];
@@ -79,7 +79,7 @@
         [SVProgressHUD showWithStatus:@"Scanning Environment"];
         
         [_manager setLocationLat:currentLatitude longitude:currentLongitude];
-        [_manager fetchPokemons];
+        [_manager login];
     } else {
         NSLog(@"No GPS Position");
     }
@@ -184,8 +184,8 @@
         title = [error localizedDescription];
         msg = @"Please change your location.";
     } else {
-        title = @"Login session expired!";
-        msg = @"Please login again to continue scanning.";
+        title = [error localizedDescription];
+        msg = [NSString stringWithFormat:@"Scanning failed with Status Code: %@", [error userInfo]];
     }
     UIAlertController *alertController = [UIAlertController
                                           alertControllerWithTitle:title
@@ -213,6 +213,8 @@
 
 - (void)didReceiveLogin:(NSNumber *)loginStatus {
     NSLog(@"Login with Status: %@", loginStatus);
+    NSLog(@"fetching pokemon");
+    [_manager fetchPokemons];
 }
 
 - (void)loginFailedWithError:(NSError *)error {
