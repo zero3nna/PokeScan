@@ -32,7 +32,12 @@
     NSError *error = nil;
     NSDictionary *pokemons = [BuildPokemons dataFromJSON:objectNotation error:&error];
     
-    [self.delegate didReceivePokemons:pokemons];
+    if (error != nil) {
+        [self.delegate fetchingPokemonsFailedWithError:error];
+    } else {
+        [self.delegate didReceivePokemons:pokemons];
+    }
+    
 }
 
 - (void)fetchingPokemonsFailedWithError:(NSError *)error {
@@ -43,7 +48,12 @@
     NSError *error = nil;
     NSNumber *loginCode = [BuildPokemons loginFromJSON:objectNotation error:&error];
     
-    [self.delegate didReceiveLogin:loginCode];
+    if (error != nil) {
+        [self.delegate loginFailedWithError:error];
+    } else {
+        [self.delegate didReceiveLogin:loginCode];
+    }
+    
 }
 
 - (void)loginFailedWithError:(NSError *)error {

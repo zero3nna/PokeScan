@@ -46,6 +46,7 @@
     
     _mapView.showsUserLocation = YES;
     _mapView.delegate = self;
+    _mapView.tintColor = [UIColor colorWithRed:255.0f/255.0f green:183.0f/255.0f blue:0.0f/255.0f alpha:1.0];
     [_mapView setUserTrackingMode:MKUserTrackingModeFollow];
     
     [_scanButton addTarget:self action:@selector(scanForPokemon) forControlEvents:UIControlEventTouchUpInside];
@@ -86,8 +87,8 @@
 }
 
 - (void)resetCurrentLocation {
-    _mapView.showsUserLocation = YES;
-    [_mapView setUserTrackingMode:MKUserTrackingModeFollow];
+    //[_mapView setUserTrackingMode:MKUserTrackingModeFollow];
+    [_mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
 }
 
 -(void)createPokeAnnotations:(NSDictionary *)pokemons {
@@ -182,7 +183,10 @@
     NSString *msg = [[NSString alloc] init];
     if ([[error localizedDescription] isEqualToString:@"No Pokemon in this area"]) {
         title = [error localizedDescription];
-        msg = @"Please change your location.";
+        msg = @"Please change your location or try scanning again later.";
+    } else if ([[error localizedDescription] isEqualToString:@"Request throttled by server"]) {
+        title = @"Please try again later!";
+        msg = [NSString stringWithFormat:@"Scanning failed with Status Code: %@", [error userInfo]];
     } else {
         title = [error localizedDescription];
         msg = [NSString stringWithFormat:@"Scanning failed with Status Code: %@", [error userInfo]];
@@ -193,19 +197,11 @@
                                           preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okAction = [UIAlertAction
-                               actionWithTitle:NSLocalizedString(@"Login", @"OK action")
+                               actionWithTitle:NSLocalizedString(@"Ok", @"OK action")
                                style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction *action)
                                {
-                                   if (![[error localizedDescription] isEqualToString:@"No Pokemon in this area"]) {
-                                       if (currentLatitude != 0.0 && currentLongitude != 0.0) {
-                                           [_manager setLocationLat:currentLatitude longitude:currentLongitude];
-                                           [_manager login];
-                                       
-                                       } else {
-                                           NSLog(@"No GPS Position");
-                                       }
-                                   }
+                                   // insert action
                                }];
     [alertController addAction:okAction];
     [self presentViewController:alertController animated:YES completion:nil];
@@ -218,6 +214,10 @@
 }
 
 - (void)loginFailedWithError:(NSError *)error {
+    
+    [_scanButton setUserInteractionEnabled:YES];
+    [SVProgressHUD dismiss];
+    
     UIAlertController *alertController = [UIAlertController
                                           alertControllerWithTitle:[error localizedDescription]
                                           message:[NSString stringWithFormat:@"Login failed with Status Code: %@", [error userInfo]]

@@ -24,10 +24,10 @@
     NSLog(@"ParsedObject: %@", parsedObject);
     
     NSDictionary *results = [parsedObject valueForKey:@"pokemons"];
-    NSNumber *statusCode = [[NSNumber alloc] initWithInt:999];
+    NSNumber *statusCode = [[NSNumber alloc] initWithInt:0];
     if (results.count == 0) {
         statusCode = [parsedObject valueForKey:@"status_code"];
-        if ([statusCode integerValue] != 999) {
+        if (statusCode) {
             NSMutableDictionary* details = [NSMutableDictionary dictionary];
             [details setValue:@"Scanning failed with Status Code" forKey:NSLocalizedDescriptionKey];
             *error = [NSError errorWithDomain:@"/update/lat/long" code:[statusCode integerValue] userInfo:details];
@@ -58,6 +58,12 @@
     NSNumber *results = [parsedObject valueForKey:@"status_code"];
     
     if ([results integerValue] <= 0) {
+        if ([results integerValue] == -4) {
+            NSMutableDictionary* details = [NSMutableDictionary dictionary];
+            [details setValue:@"Request throttled by server" forKey:NSLocalizedDescriptionKey];
+            *error = [NSError errorWithDomain:@"/update/lat/long" code:[results integerValue] userInfo:details];
+            return nil;
+        }
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"Login failed with Status Code" forKey:NSLocalizedDescriptionKey];
         *error = [NSError errorWithDomain:@"/login/lat/long" code:[results integerValue] userInfo:details];
